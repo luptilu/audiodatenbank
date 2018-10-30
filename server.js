@@ -23,7 +23,7 @@ function renderLink(res) {
 MongoClient.connect('mongodb://luptilu:luisa1@ds143293.mlab.com:43293/audiodatenbank', (err, client) => {
   if (err) return console.log(err)
   db = client.db('audiodatenbank') // whatever your database name is
-  app.listen(3000, () => {
+  app.listen(80, () => {
     console.log('listening on 3000')
   });
 });
