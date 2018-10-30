@@ -8,13 +8,14 @@
 
 <ul class="links">
       <li class="link">
-        <span><%= links[0].name %></span>
-        <span><%= links[0].link %></span>
+        <span><%= link.name %></span>
+        <span><%= link.link %></span>
       </li>
   </ul>
   
 <form action="/links" method="POST">
     <input type="text" placeholder="Feedback" name="feedback">
+    <input type="hidden" value=<%= link._id %> name="_id">
     <button type="submit">Feedback senden</button>
   </form></body>
 </html>
