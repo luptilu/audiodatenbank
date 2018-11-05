@@ -36,6 +36,7 @@ app.get('/', (req, res) => { renderLink(res); });
 
 app.post('/links', (req, res) => {
   let data = req.body;
+  if (!data.feedback) {return;}
   db.collection('links').update(
     { _id: ObjectID(data._id) },
     { 
