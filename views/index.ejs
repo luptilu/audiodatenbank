@@ -1,21 +1,160 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>MY APP</title>
-</head>
-<body>
-<p>Audio-Datenbank</p>
+    <head>
+        <meta charset="UTF-8">
+        <title>NZZ Audio: Verbesserungen</title>
+        <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
 
-<ul class="links">
-      <li class="link">
-        <span><%= link.name %></span>
-        <span><%= link.link %></span>
-      </li>
-  </ul>
-  
-<form action="/links" method="POST">
-    <input type="text" placeholder="Feedback" name="feedback">
-    <input type="hidden" value=<%= link._id %> name="_id">
-    <button type="submit">Feedback senden</button>
-  </form></body>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto" rel="stylesheet">
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.20/css/uikit.min.css" />
+
+        <!-- UIkit JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.20/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.20/js/uikit-icons.min.js"></script>
+        <style>
+            h1 {
+                font-size: 5em;
+                font-family: 'Playfair Display', serif;
+            }
+            h2 {
+                font-size: 1em;
+                font-family: 'Roboto', sans-serif;
+
+            }
+            body { 
+                padding: 100px;
+            }
+
+            p {
+                padding: 5px;
+                color: black;
+                margin-left: 10px;
+            }
+
+            p span {
+                color: #121A5B;
+                font-size: 200%;
+                margin-left: 10px;
+                font-family: Arial, Helvetica, sans-serif
+
+            }
+
+            button {
+                padding: 15px;
+                margin-right: 10px !important;
+                font-size: 0.7em;
+                background-color: gainsboro !important;
+                border: solid 5px #121A5B !important;
+            }
+
+
+            .artikel {
+                padding: 10px;
+            }
+
+            input {
+                font-size: 1em;
+                width: 50%;
+                height: 37%;
+                padding: 15px;
+                border: solid 5px #121A5B;
+                margin-bottom: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                background-color: gainsboro;
+            }
+
+            textarea {
+                font-size: 1em;
+                width: 100%;
+                height: 37%;
+                padding: 15px;
+                border: solid 5px #121A5B;
+                background-color: gainsboro;
+                resize: none;
+            }
+
+            .icon {
+                padding: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                float: left;
+                height: 50px;
+                margin-bottom: 25px;
+            }
+
+            a {
+                text-decoration-line: underline;
+            }
+        
+            .welcome {
+                margin-left: 10px;
+                overflow: hidden;
+            }
+
+        </style>
+    </head>
+    <body>
+        <img style="width: 40%; margin-bottom: 20px" src="http://www.zala.ch/wp-content/uploads/overlay_neuezuercherzeitung.png">
+        <div class="uk-panel">
+            <img style="width: 20%" class="uk-align-left uk-margin-remove-adjacent" src="https://cdn-images-1.medium.com/max/1200/1*fRt9G2K2yHc2rnyuoHLXgg.png">
+            <div class="uk-grid">
+                <div class="uk-width-1-6">
+                     <img class="icon" src="https://i.postimg.cc/jqQrZVX9/play-icon-2x.png">
+                </div>
+                 <div class="uk-width-5-6">
+                    <p class="welcome">
+                    Herzlichen Dank, dass Sie uns dabei helfen, Fehler in unserem Sprach-Service zu korrigieren und unseren Algorithmus zu trainieren!
+                     </p>
+                 </div>
+            </div>
+            <div class="uk-grid">
+                 <div class="uk-width-1-6">
+                    <img class="icon" src="https://i.postimg.cc/sDM3dq6K/help.png">
+                </div>
+                <div class="uk-width-5-6">
+                    <p class="welcome">
+                    
+                        Untenstehend finden Sie einen <b>Link zu einem Artikel.</b> Hören Sie diesen in Ihrem Browser oder Ihrer App und erfassen Sie Aussprachefehler im dafür vorgesehenden <b>Feedback-Feld</b>.
+                    
+                        Achtung: Wenn Sie auf "Feedback senden" klicken oder "Enter" drücken, werden Ihre Daten übermittelt und Sie können keine Änderungen mehr vornehmen. <b> Trennen Sie daher die erfassten Fehler bitte mit einem Komma oder Semikolon und nicht mit der Eingabetaste</b>.
+                    </p>
+
+            </div>
+            <div class="uk-grid">
+                    <div class="uk-width-1-6">
+                            <img class="icon" src="https://i.postimg.cc/MTKpcDxG/edit.png">
+                        </div>
+                    <div class="uk-width-5-6">
+                            <p class="welcome">
+                                    <b>Beispiel für ein Feedback:</b> "SAP und AfD werden nicht als Abkürzungen, sondern als Worte sap und aft gesprochen; Gebirgspass wird als Gebirg-Spass ausgesprochen; Neuchâtel (wird deutsch ausgesprochen)"
+                                </p>
+                    </div>
+
+            </div>   
+            <div class="artikel">
+                <ul class="links">
+                    <p class="link">
+                        <span>Ihr Link: <a href='<%= link.link %>'><%= link.name %></a></span>
+                    </p>
+                </ul>
+                
+                <form action="/links" method="POST" id="feedbackform">
+                    <div class="uk-grid">
+                        <div class="uk-width-2-3">
+                            <textarea  placeholder="Geben Sie hier Aussprachefehler und andere Bemerkungen ein." name="comment" form="feedbackform"></textarea>
+                        </div>
+                        <div class="uk-width-1-3">
+                            <button type="submit" class="uk-button uk-button-default ">Feedback senden</button>
+                        </div>
+                        
+                    </div>
+                    <input type="hidden" value=<%= link._id %> name="_id">
+                    <div uk-drop>
+                        <div class="uk-card uk-card-body uk-card-default">Achtung – Nach dem Klick können Sie keine Änderungen mehr erfassen.</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
