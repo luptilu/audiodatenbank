@@ -1,6 +1,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>NZZ Audio: Verbesserungen</title>
         <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
 
@@ -95,9 +96,10 @@
         </style>
     </head>
     <body>
-        <img style="width: 40%; margin-bottom: 20px" src="http://www.zala.ch/wp-content/uploads/overlay_neuezuercherzeitung.png">
+            <img class="uk-hidden@l	uk-hidden@xl uk-hidden@m" style="width: 100%; margin-bottom: 20px" src="http://www.zala.ch/wp-content/uploads/overlay_neuezuercherzeitung.png">
+        <img class="uk-visible@m" style="width: 40%; margin-bottom: 20px" src="http://www.zala.ch/wp-content/uploads/overlay_neuezuercherzeitung.png">
         <div class="uk-panel">
-            <img style="width: 20%" class="uk-align-left uk-margin-remove-adjacent" src="https://cdn-images-1.medium.com/max/1200/1*fRt9G2K2yHc2rnyuoHLXgg.png">
+            <img style="width: 20%" class="uk-align-left uk-margin-remove-adjacent uk-visible@m" src="https://cdn-images-1.medium.com/max/1200/1*fRt9G2K2yHc2rnyuoHLXgg.png">
             <div class="uk-grid">
                 <div class="uk-width-small-1-2 uk-width-1-6">
                      <img class="icon" src="https://i.postimg.cc/jqQrZVX9/play-icon-2x.png">
@@ -135,7 +137,7 @@
             <div class="artikel">
                 <ul class="links">
                     <p class="link">
-                        <span>Ihr Link: <a href='<%= link.link %>'><%= link.name %></a></span>
+                        <span>Ihr Link: <a href='<%= link.link %>'><%= link.name %></a></span>  
                     </p>
                 </ul>
                 
