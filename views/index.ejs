@@ -90,7 +90,13 @@
 
             .uk-grid>*>:last-child {
                 margin-top: 10px;
+                margin-bottom: 10px;
             }       
+
+            .footer {
+                margin-top: 50px;
+                text-align: center;
+            }
 
             
             @media only screen and (max-width: 600px) {
@@ -156,15 +162,25 @@
                         </div>
                         <div class="uk-width-1-1">
                             <button type="submit" class="uk-button uk-button-default ">Feedback senden</button>
+                            <div uk-drop>
+                                    <div class="uk-card uk-card-body uk-card-default">Achtung – Nach dem Klick können Sie keine Änderungen mehr erfassen.</div>
                         </div>
+                        
                         
                     </div>
                     <input type="hidden" value=<%= link._id %> name="_id">
-                    <div uk-drop>
-                        <div class="uk-card uk-card-body uk-card-default">Achtung – Nach dem Klick können Sie keine Änderungen mehr erfassen.</div>
+                   
                     </div>
                 </form>
             </div>
+            
+
         </div>
+        <footer class="footer">
+                <div class="uk-container uk-container-center">
+                   <p>© Digitale Produktentwicklung NZZ, 2018</p>
+                </div>
+        </footer>
     </body>
+   
 </html>
